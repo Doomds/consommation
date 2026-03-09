@@ -1,25 +1,39 @@
 package org.conso.entity;
 
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "appareil")
 public class Appareil {
 
-  private long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
   private String denomination;
-  private long refType;
-  private long refZone;
-  private long quantite;
-  private double puissance;
-  private double consommation;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "ref_type")
+  private TypeAppareil typeAppareil;
 
-  public long getId() {
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "ref_zone")
+  private Zone zone;
+
+  private Long quantite;
+  private Double puissance;
+  private Double consommation;
+
+  public Appareil() {
+  }
+
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
-
 
   public String getDenomination() {
     return denomination;
@@ -29,48 +43,45 @@ public class Appareil {
     this.denomination = denomination;
   }
 
-
-  public long getRefType() {
-    return refType;
+  public TypeAppareil getTypeAppareil() {
+    return typeAppareil;
   }
 
-  public void setRefType(long refType) {
-    this.refType = refType;
+  public void setTypeAppareil(TypeAppareil typeAppareil) {
+    this.typeAppareil = typeAppareil;
   }
 
-
-  public long getRefZone() {
-    return refZone;
+  public Zone getZone() {
+    return zone;
   }
 
-  public void setRefZone(long refZone) {
-    this.refZone = refZone;
+  public void setZone(Zone zone) {
+    this.zone = zone;
   }
 
-
-  public long getQuantite() {
+  public Long getQuantite() {
     return quantite;
   }
 
-  public void setQuantite(long quantite) {
+  public void setQuantite(Long quantite) {
     this.quantite = quantite;
   }
 
 
-  public double getPuissance() {
+  public Double getPuissance() {
     return puissance;
   }
 
-  public void setPuissance(double puissance) {
+  public void setPuissance(Double puissance) {
     this.puissance = puissance;
   }
 
 
-  public double getConsommation() {
+  public Double getConsommation() {
     return consommation;
   }
 
-  public void setConsommation(double consommation) {
+  public void setConsommation(Double consommation) {
     this.consommation = consommation;
   }
 
