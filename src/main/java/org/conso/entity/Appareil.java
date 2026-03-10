@@ -67,7 +67,6 @@ public class Appareil {
     this.quantite = quantite;
   }
 
-
   public Double getPuissance() {
     return puissance;
   }
@@ -75,7 +74,6 @@ public class Appareil {
   public void setPuissance(Double puissance) {
     this.puissance = puissance;
   }
-
 
   public Double getConsommation() {
     return consommation;
